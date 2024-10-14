@@ -1,4 +1,6 @@
+import java.sql.Time;
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,8 +31,21 @@ public class TravelBooking {
 		sel1.selectByValue("1995");
 		dr.findElement(By.xpath("//a[@data-date='15']")).click();
 		
-		//dr.close();		
-		
+		List<WebElement> l=dr.findElements(By.name("sex"));
+		//dr.close();	
+		for(WebElement e:l) {
+			if(e.getAttribute("value").equalsIgnoreCase("1")) {
+				e.click();
+			}
+		}
+		List<WebElement>r=dr.findElements(By.name("traveltype"));
+		for(WebElement e:r) {
+			if(e.getAttribute("value").equalsIgnoreCase("2")) {
+				e.click();
+			}
+		}
+		dr.findElement(By.xpath("//input[@id='fromcity']")).sendKeys("Delhi");
+		dr.findElement(By.xpath("//input[@id='tocity']")).sendKeys("Bengaluru");
 		
 	}
 
